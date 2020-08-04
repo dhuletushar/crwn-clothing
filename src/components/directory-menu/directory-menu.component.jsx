@@ -1,7 +1,7 @@
 import React from 'react';
 import './directory-menu.styles.scss';
-
 import MenuItem from '../menu-item/menu-item.component';
+
 
 class DirectoryMenu extends React.Component {
     constructor(){
@@ -47,8 +47,13 @@ class DirectoryMenu extends React.Component {
 
     render(){
        return <div className='directory-menu'>
-            {this.state.sections.map(({title, imageUrl, size, id}) => (
+            {/* {this.state.sections.map(({title, imageUrl, size, id}) => (
                  <MenuItem key={id} title={title} imageUrl={imageUrl} size={size}/>
+            ))} 
+            This approach can be used when the props to be passed are similar in name
+            */}
+            {this.state.sections.map(({id, ...otherSectionProps}) => (
+                 <MenuItem key={id} {...otherSectionProps}/>
             ))}
         </div>
     }
